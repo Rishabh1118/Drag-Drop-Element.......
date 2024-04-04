@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>DragDrop.....</title>
+      <link rel="stylesheet" href="dragDrop.css">
+</head>
+<body>
+      <div class="main">
+      <p>Draggable Box.....</p>
+     <div class="container">
+      <div id="left">
+           <div class="data" draggable="true">HTML and Css</div> 
+           <div class="data" draggable="true">CSS and Java</div>
+           <div class="data" draggable="true">JavaScript and W3Css</div>
+           <div class="data" draggable="true">Bootstarp and JQuery</div>
+      </div>
+      <div id="right"></div>
+     </div> 
+</div>
+     <script>
+      let lists=document.getElementsByClassName("data");
+      let leftBtn=document.getElementById("left");
+      let rightBtn=document.getElementById("right");
+      for(data of lists){
+            data.addEventListener("dragstart",function(v){
+                  let select=v.target;
+
+            rightBtn.addEventListener("dragover",function(v){
+                  v.preventDefault();
+            });
+            rightBtn.addEventListener("drop",function(v){
+                  rightBtn.appendChild(select);
+                  select=null;
+            });
+            leftBtn.addEventListener("dragover",function(v){
+                  v.preventDefault();
+            });
+            leftBtn.addEventListener("drop",function(v){
+                  leftBtn.appendChild(select);
+                  select=null;
+            });
+      });
+      }
+     </script>
+</body>
+</html>
